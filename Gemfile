@@ -43,6 +43,23 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'puma'
+# group :development, :test do
+#   gem 'faker'
+#   gem 'capybara'
+#   gem 'factory_girl_rails'
+#   gem 'guard-rspec'
+#   gem 'rspec-rails'
+# end
+
+# group :development do
+#   gem 'better_errors'
+#   gem 'binding_of_caller'
+#   gem 'meta_request'
+#   gem 'travis-lint'
+# end
+
+gem 'devise', github: 'plataformatec/devise'
 gem 'mongoid', github: 'mongoid/mongoid'
+gem 'puma'
+
 
