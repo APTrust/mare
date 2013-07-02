@@ -1,5 +1,9 @@
 class User
   include Mongoid::Document
+
+  belongs_to :institution
+
+  ROLES = %w[admin moderator author banned]
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
