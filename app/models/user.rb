@@ -37,4 +37,10 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
+  field :role, type: String
+
+  def admin?
+    self.role == 'admin'
+  end
 end

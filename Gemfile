@@ -58,6 +58,7 @@ end
 #   gem 'travis-lint'
 # end
 
+gem 'cancan'
 gem 'devise', github: 'plataformatec/devise'
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'puma'
