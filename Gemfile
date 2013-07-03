@@ -60,7 +60,10 @@ end
 
 gem 'cancan'
 gem 'devise', github: 'plataformatec/devise'
+gem 'fedora_rails', path: '../fedora_rails'
+gem 'figaro'
 gem 'mongoid', github: 'mongoid/mongoid'
+gem 'omniauth-google-oauth2'
 gem 'puma'
 
 
