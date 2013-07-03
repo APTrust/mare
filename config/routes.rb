@@ -1,4 +1,4 @@
-Echoes::Application.routes.draw do
+Mare::Application.routes.draw do
   resources :institutions
 
   devise_for :users

@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Echoes::Application.config.secret_key_base = '732c2f574f6753810ca6cbfe8453a92e0df4337e09e4fd6c30adab306a4a685803b2c5220418e662e8c8aaa800b87723e50fcf1b99719cf31b6ca27e201b3b12'
+Mare::Application.config.secret_key_base = '732c2f574f6753810ca6cbfe8453a92e0df4337e09e4fd6c30adab306a4a685803b2c5220418e662e8c8aaa800b87723e50fcf1b99719cf31b6ca27e201b3b12'

@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Echoes::Application.load_tasks
+Mare::Application.load_tasks
