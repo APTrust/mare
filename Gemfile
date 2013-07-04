@@ -57,6 +57,7 @@ end
 #   gem 'travis-lint'
 # end
 
+gem 'bootstrap-sass'
 gem 'cancan'
 gem 'devise', github: 'plataformatec/devise'
 gem 'fedora_rails', path: '../fedora_rails'
