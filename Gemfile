@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.0.0'
 
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -62,8 +61,10 @@ gem 'cancan'
 gem 'devise', github: 'plataformatec/devise'
 gem 'fedora_rails', path: '../fedora_rails'
 gem 'figaro'
+gem 'loggable' # A stupid requirement from Rubydora
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'omniauth-google-oauth2'
 gem 'puma'
+gem 'simple_form'
 
 
