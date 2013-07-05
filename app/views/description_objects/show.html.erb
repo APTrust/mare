@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @description_object.title %>
+</p>
+
+<p>
+  <strong>Dpn status:</strong>
+  <%= @description_object.dpn_status %>
+</p>
+
+<%= link_to 'Edit', edit_description_object_path(@description_object) %> |
+<%= link_to 'Back', description_objects_path %>

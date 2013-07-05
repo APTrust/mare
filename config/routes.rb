@@ -1,11 +1,24 @@
 Mare::Application.routes.draw do
+  get "home/index"
+  resources :description_objects
   resources :institutions
 
-  devise_for :users
+  # root :to => 'description_objects#index'
+  # root to: 'home#index'
 
-  devise_scope :user do
-    root to: "devise/sessions#new"
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, controllers: { :omniauth_callbacks => "users/omniauth_callbacks",  :registrations => "users/registrations" }
+
+  authenticated :user do
+    root :to => "description_objects#index", :as => "authenticated_root"
   end
+  
+  devise_scope :user do
+    # root to: "devise/sessions#new"
+    root to: "home#index"
+    delete 'sign_out', :to => 'devise/sessions#destroy', as: :destroy_user_session
+  end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -62,3 +75,4 @@ Mare::Application.routes.draw do
   #     resources :products
   #   end
 end
+# 

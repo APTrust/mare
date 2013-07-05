@@ -6,22 +6,25 @@ class User
   validates :institution_id, presence: true
   validates :institution, associated: true
 
-  ROLES = %w[admin moderator author banned]
+  ROLES = %w[superuser institutional_admin institutional_user]
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
 
-  devise :omniauthable, :omniauth_providers => [:google_oauth2]
+  # devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+
+  devise :omniauthable, :registerable, :omniauth_providers => [:google_oauth2]
+
+  field :name
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
-  field :encrypted_password, :type => String, :default => ""
+  # field :encrypted_password, :type => String, :default => ""
   
   ## Recoverable
-  field :reset_password_token,   :type => String
-  field :reset_password_sent_at, :type => Time
+  # field :reset_password_token,   :type => String
+  # field :reset_password_sent_at, :type => Time
 
   ## Rememberable
   field :remember_created_at, :type => Time
@@ -51,5 +54,19 @@ class User
 
   def admin?
     self.role == 'admin'
+  end
+
+  def is?(grole)
+    self.role == role.to_s
+  end
+  
+  def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
+    data = access_token.info
+    user = User.where(:email => data["email"]).first
+
+    unless user
+      user = User.create(name: data["name"], email: data["email"])
+    end
+    user
   end
 end
