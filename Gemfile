@@ -62,6 +62,7 @@ gem 'cancan'
 gem 'devise', github: 'plataformatec/devise'
 gem 'fedora_rails', path: '../fedora_rails'
 gem 'figaro'
+gem 'jquery-turbolinks'
 gem 'loggable' # A stupid requirement from Rubydora
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'omniauth-google-oauth2'
