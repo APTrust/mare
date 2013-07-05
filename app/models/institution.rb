@@ -1,6 +1,9 @@
 class Institution
   include Mongoid::Document
 
+  has_many :description_objects
+  has_many :users
+
   field :api_key, type: String
   field :name, type: String
   field :point_of_contact, type: String
