@@ -3,6 +3,9 @@ class User
 
   belongs_to :institution
 
+  validates :institution_id, presence: true
+  validates :institution, associated: true
+
   ROLES = %w[admin moderator author banned]
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
