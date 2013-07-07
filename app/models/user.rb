@@ -3,7 +3,7 @@ class User
 
   belongs_to :institution
 
-  validates :institution_id, presence: true
+  validates :institution_id, :email, presence: true
   validates :institution, associated: true
 
   ROLES = %w[superuser institutional_admin institutional_user]
@@ -54,6 +54,11 @@ class User
 
   def admin?
     self.role == 'admin'
+  end
+
+  # For display on views use name if available, otherwise use email.
+  def display_name
+    name.nil? ? email : name
   end
 
   def is?(grole)

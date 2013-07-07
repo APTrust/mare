@@ -13,7 +13,7 @@
     <ul class="nav pull-right">
       <li class="dropdown">
         <% if user_signed_in? %>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> (<%= current_user.institution.name %>) <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.display_name %> (<%= current_user.institution.name %>) <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Edit Profile", edit_user_registration_path(current_user) %></li>
             <li class="divider"></li>

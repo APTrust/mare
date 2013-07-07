@@ -5,6 +5,7 @@
 
   <div class="form-inputs">
     <%= f.input :email, :required => true, :autofocus => true %>
+    <%= f.input :name %>
     <%= f.association :institution, collection: Institution.all %>
   </div>
 
