@@ -3,8 +3,13 @@ class User
 
   belongs_to :institution
 
-  validates :institution_id, :email, presence: true
+  validates :institution_id, :email, :phone_number, presence: true
   validates :institution, associated: true
+
+  # Custom format validations.  See lib/customer_validators.rb
+  validates :name, person_name_format: true
+  validates :email, email: true
+  validates :phone_number, phone_format: true
 
   ROLES = %w[superuser institutional_admin institutional_user]
 
@@ -15,8 +20,6 @@ class User
   # devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   devise :omniauthable, :registerable, :omniauth_providers => [:google_oauth2]
-
-  field :name
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
@@ -50,6 +53,9 @@ class User
   ## Token authenticatable
   # field :authentication_token, :type => String
 
+  # APTrust Fields
+  field :name
+  field :phone_number
   field :role, type: String
 
   def admin?
