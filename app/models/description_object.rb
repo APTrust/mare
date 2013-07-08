@@ -7,4 +7,7 @@ class DescriptionObject
 
   field :title, type: String
   field :dpn_status, type: Boolean
+
+  validates :institution_id, :title, :dpn_status, presence: true
+  validates :institution, associated: true
 end
