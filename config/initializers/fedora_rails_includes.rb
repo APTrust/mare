@@ -5,4 +5,6 @@
 # 
 # For example:
 #   YourObject.send :include, FedoraRails::Concerns::Fedorable
-Institution.send :include, FedoraRails::Concerns::Fedorable
+['Bag', 'CompressedBag', 'DescriptionObject', 'Institution', 'TransactionalObject'].each do |fedora_class|
+  fedora_class.constantize.send :include, Concerns::Fedorable
+end
