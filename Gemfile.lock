@@ -18,8 +18,10 @@ GIT
       railties (>= 3.2.6, < 5)
       warden (~> 1.2.1)
 
-PATH
-  remote: ../fedora_rails
+GIT
+  remote: git://github.com/uvalib-dcs/fedora_rails.git
+  revision: 536cdfdad8db9653a2b66c3d5aeae432fdaa788d
+  branch: master
   specs:
     fedora_rails (0.0.1)
       rails (~> 4.0.0)
