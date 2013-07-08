@@ -1,6 +1,8 @@
 class DescriptionObjectsController < ApplicationController
-  before_action :set_description_object, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
   before_filter :authenticate_user!
+  before_action :set_description_object, only: [:show, :edit, :update, :destroy]
+
 
   # GET /description_objects
   # GET /description_objects.json
@@ -42,7 +44,7 @@ class DescriptionObjectsController < ApplicationController
   # PATCH/PUT /description_objects/1.json
   def update
     respond_to do |format|
-      if @description_object.update(description_object_params)
+      if @description_object.update_attributes(description_object_params)
         format.html { redirect_to @description_object, notice: 'Description object was successfully updated.' }
         format.json { head :no_content }
       else
@@ -70,6 +72,6 @@ class DescriptionObjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def description_object_params
-      params.require(:description_object).permit(:title, :dpn_status)
+      params[:description_object].permit(:title, :dpn_status, :institution_id)
     end
 end

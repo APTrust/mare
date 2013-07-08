@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
 
     @user = User.find(current_user.id)
-    if @user.update_attributes(description_object_params)
+    if @user.update_attributes(user_params)
       set_flash_message :notice, :updated
       # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true
@@ -19,7 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def description_object_params
-    params.require(:user).permit(:institution_id)
+  def user_params
+    params.require(:user).permit(:institution_id, :name, :email)
   end
 end
