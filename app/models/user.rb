@@ -61,7 +61,7 @@ class User
     name.nil? ? email : name
   end
 
-  def is?(grole)
+  def is?(role)
     self.role == role.to_s
   end
   
