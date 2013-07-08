@@ -60,7 +60,8 @@ end
 gem 'bootstrap-sass'
 gem 'cancan'
 gem 'devise', github: 'plataformatec/devise'
-gem 'fedora_rails', path: '../fedora_rails'
+gem 'fedora_rails', github: 'uvalib-dcs/fedora_rails', branch: 'master'
+# gem 'fedora_rails', path: '../fedora_rails'
 gem 'figaro'
 gem 'jquery-turbolinks'
 gem 'loggable' # A stupid requirement from Rubydora
