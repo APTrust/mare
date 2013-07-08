@@ -1,16 +1,20 @@
-<h1>APTrust Contributing Institutions</h1>
+<div class="page-header">
+  <h1>APTrust Contributing Institutions</h1>
+</div>
 
-<table class="table table-condensed table-hover" data-provides="rowlink">
+<table class="table table-condensed table-hover">
   <thead>
     <tr>
       <th>Name</th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @institutions.each do |institution| %>
       <tr>
-        <td><%= link_to institution.name, institution_path(institution) %></td>
+        <td><%= institution.name %></td>
+        <td><%= link_to 'Show', institution_path(institution), class: 'btn btn-primary' %> | <%= link_to 'Edit', edit_institution_path(institution), class: 'btn btn-warning' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -18,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Institution', new_institution_path %>
+<%= link_to 'New Institution', new_institution_path, class: 'btn btn-primary' %>

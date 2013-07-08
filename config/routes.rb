@@ -1,16 +1,16 @@
 Mare::Application.routes.draw do
   get "home/index"
-  resources :description_objects
-  resources :institutions
+
 
   # root :to => 'description_objects#index'
   # root to: 'home#index'
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, controllers: { :omniauth_callbacks => "users/omniauth_callbacks",  :registrations => "users/registrations" }
 
-  authenticated :user do
-    root :to => "description_objects#index", :as => "authenticated_root"
-  end
+  # authenticated :user do
+    # root to: "home#index"
+    # root :to => "description_objects#index", :as => "authenticated_root"
+  # end
   
   devise_scope :user do
     # root to: "devise/sessions#new"
@@ -18,6 +18,12 @@ Mare::Application.routes.draw do
     delete 'sign_out', :to => 'devise/sessions#destroy', as: :destroy_user_session
   end
 
+  scope '/admin' do 
+    resources :users
+  end
+
+  resources :description_objects
+  resources :institutions
 
 
   # The priority is based upon order of creation: first created -> highest priority.
