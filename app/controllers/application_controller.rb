@@ -10,4 +10,10 @@ class ApplicationController < ActionController::Base
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
   end
+
+  # If a User is denied access for an action, return them back to the last page they could view.
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "#{exception}"
+    redirect_to :back
+  end
 end
