@@ -12,6 +12,8 @@ class InstitutionsController < ApplicationController
   # GET /institutions/1
   # GET /institutions/1.json
   def show
+    @description_objects = @institution.description_objects
+    @users = @institution.users
   end
 
   # GET /institutions/new
