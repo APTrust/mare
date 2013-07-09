@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
   # If a User is denied access for an action, return them back to the last page they could view.
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "#{exception}"
-    redirect_to :back
+    redirect_to root_path
   end
 end
