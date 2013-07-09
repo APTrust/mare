@@ -1,4 +1,5 @@
 # Mare
+[![Code Climate](https://codeclimate.com/github/aptrust/mare.png)](https://codeclimate.com/github/aptrust/mare)
 
 ## APTrust Admin Interface (Rubydora-only Implementation)
 
