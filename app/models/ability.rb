@@ -1,36 +1,74 @@
 class Ability
   include CanCan::Ability
 
+  # All users can manage their profile but not change their role or institution.
+  #
+  # Superuser:
+  # * Can create, read and update everything
+  # * Can delete Users
+  # * Are the only class that can create superusers
+  # * Are the only class tha can change instuttional affiliation
+  #
+  # Institutional Admin:
+  # * Can crud any user from their Institution
+  # * Can change role for any user from their Institution
+  # * Cannot change Institution for any user
+  # * Cannot create superusers
+  # * Can read and update information for their Institution.
+  # * Can create, read and update a DescriptionObject, Bag, CompressedBag or Transactional Object owned by their Institution.
+  # * Cannot delete a DescriptionObject, Bag, CompressedBag or Transactional Object owned by their Institution.
+  #
+  # Institutional User:
+  # * Can read any object owned by their Institution.
+  #
+  # Any authenticated user:
+  # * Can update their own User profile
+  # 
+  # Unauthenticated users:
+  # * Denied access to all parts of the application
   def initialize(user)
-    # Define abilities for the passed in user here.
-    user ||= User.new # guest user (not logged in)
-    if user.is? :superuser
-      can :manage, :all
-    elsif user.is? :institutional_admin
-      can :manage, DescriptionObject do |description_object|
-        description_object.insitution_id = user.insitution_id
-      end
-    else
-      cannot :read, DescriptionObject
+    alias_action :create, :read, :update, :destroy, :to => :crud
+
+    # Unauthenticaed users
+    cannot :manage, :all
+
+    # Any authenticated users
+    if user
+      can [:read, :update], User, id: user.id
+      cannot :manage_role, User
+      cannot :assign_superuser, User
+      cannot :manage_institution, User
+      cannot :destroy, User
     end
 
-    #
-    # The first argument to `can` is the action you are giving the user 
-    # permission to do.
-    # If you pass :manage it will apply to every action. Other common actions
-    # here are :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on. 
-    # If you pass :all it will apply to every resource. Otherwise pass a Ruby
-    # class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the
-    # objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details:
-    # https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    # Superuser
+    if user.is? :superuser
+      can [:create, :read, :update], :all
+      can :assign_superuser, User
+      can :manage_institution, User
+      can :manage_role, User
+      can :destroy, User
+    end
+
+    # Institutional Admin
+    if user.is? :institutional_admin
+      can [:crud, :manage_role], User, institution_id: user.institution_id
+      cannot [:manage_institution, :assign_superuser], User
+
+      can [:read, :update], Institution, id: user.institution.id
+      can [:create, :read, :update], DescriptionObject, institution_id: user.institution.id
+      can [:create, :read, :update], Bag, institution_id: user.institution.id
+      can [:create, :read, :update], CompressedBag, institution_id: user.institution.id
+      can [:create, :read, :update], TransactionalObject, institution_id: user.institution.id
+    end
+
+    # Institutional Guest
+    if user.is? :institutional_user
+      can :read, Institution, id: user.institution.id
+      can :read, DescriptionObject, institution_id: user.institution.id
+      can :read, Bag, institution_id: user.institution.id
+      can :read, CompressedBag, institution_id: user.institution.id
+      can :read, TransactionalObject, institution_id: user.institution.id
+    end
   end
 end
