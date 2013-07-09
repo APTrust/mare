@@ -3,11 +3,10 @@ class DescriptionObjectsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_description_object, only: [:show, :edit, :update, :destroy]
 
-
   # GET /description_objects
   # GET /description_objects.json
   def index
-    @description_objects = DescriptionObject.all
+    @description_objects = DescriptionObject.accessible_by(current_ability)
   end
 
   # GET /description_objects/1
