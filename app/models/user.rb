@@ -1,5 +1,7 @@
 class User
   include Mongoid::Document
+  
+  ROLES = %w[superuser institutional_admin institutional_user]
 
   belongs_to :institution
 
@@ -10,8 +12,7 @@ class User
   validates :name, person_name_format: true
   validates :email, email: true
   validates :phone_number, phone_format: true
-
-  ROLES = %w[superuser institutional_admin institutional_user]
+  validates_inclusion_of :role, in: User::ROLES, message: "The value: %{value} is not included in #{User::ROLES.join(', ')}."
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
