@@ -1,6 +1,5 @@
 <div class="page-header">
   <h1><%= @description_object.title %>
-  <%= link_to 'Edit', edit_description_object_path(@description_object), class: 'btn btn-primary' %></h1>
 </div>
 
 <p>
@@ -13,4 +12,4 @@
   <%= link_to @description_object.institution.name, institution_path(@description_object.institution) %>
 </p>
 
-<%= link_to 'Back', description_objects_path, class: 'btn btn-warning' %>
+<%= edit_link @description_object %>

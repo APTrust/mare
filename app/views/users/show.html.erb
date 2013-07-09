@@ -1,10 +1,10 @@
 <address>
-  <strong><%= @user.name %></strong><br>
-  <em><%= @user.institution.name %></em><br>
-  <%= @user.role.titleize %><br>
-  <a href="mailto:#"><%= @user.email %></a>
+  <strong><%= @user.name %></strong> (<em><%= @user.institution.name %></em>)<br>
+  <a href="mailto:#"><%= @user.email %></a><br>
+  <abbr title="Phone">P:</abbr><%= @user.phone_number %><br><br>
+  
+  <%= @user.role.titleize %>
 </address>
 
-
-<%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
-<%= link_to 'Back', users_path, class: 'btn btn-warning' %>
+<%= edit_link(@user) %>
+<%= destroy_link(@user) %>

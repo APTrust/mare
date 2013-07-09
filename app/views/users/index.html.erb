@@ -8,7 +8,7 @@
       <th>Name</th>
       <th>Email</th>
       <th>Institution</th>
-      <th></th>
+      <th>Role</th>
     </tr>
   </thead>
 
@@ -18,12 +18,11 @@
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= user.institution.name %></td>
-        <td><%= link_to 'Show', user_path(user), class: 'btn btn-primary' %> | <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-warning' %></td>
+        <td><%= user.role.humanize %></td>
+        <td><%= show_link user %> <%= edit_link user %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New User', new_user_path, :class => 'btn btn-primary' %>
+<%= create_link(User) %>

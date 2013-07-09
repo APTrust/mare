@@ -8,6 +8,7 @@
       <th>Title</th>
       <th>DPN Bound?</th>
       <th>Institution</th>
+      <th>PID</th>
       <th></th>
     </tr>
   </thead>
@@ -18,11 +19,15 @@
         <td><%= description_object.title %></td>
         <td><%= translate(description_object.dpn_status.to_bool.class) %></td>
         <td><%= description_object.institution.name %></td>
-        <td><%= link_to 'Show', description_object_path(description_object), class: 'btn btn-primary' %> | <%= link_to 'Edit', edit_description_object_path(description_object), class: 'btn btn-warning' %></td>
+        <% if description_object.fedora_attribute.pid %>
+        <td><%= description_object.fedora_attribute.pid %></td>
+        <% else %>
+        <% end %>
+        <td><%= show_link description_object %> <%= edit_link description_object %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
 
-<%= link_to 'New Description Object', new_description_object_path, class: 'btn btn-primary' %>
+<%= create_link(DescriptionObject) %>

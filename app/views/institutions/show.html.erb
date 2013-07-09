@@ -1,6 +1,6 @@
 <div class="page-header">
-  <h1><%= @institution.name %>
-  <%= link_to 'Edit', edit_institution_path(@institution), class: 'btn btn-primary' %></h1>
+  <h1><%= @institution.name %></h1>
+  <%= edit_link @institution %>
 </div>
 
 <h3>Description Objects</h3>
@@ -21,7 +21,7 @@
         <td><%= description_object.title %></td>
         <td><%= translate(description_object.dpn_status.to_bool.class) %></td>
         <td><%= description_object.institution.name %></td>
-        <td><%= link_to 'Show', description_object_path(description_object), class: 'btn btn-primary' %> | <%= link_to 'Edit', edit_description_object_path(description_object), class: 'btn btn-warning' %></td>
+        <td><%= show_link description_object %> <%= edit_link description_object %></td>
       </tr>
     <% end %>
   </tbody>
@@ -42,7 +42,7 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Show', user_path(user), class: 'btn btn-primary' %> | <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-warning' %></td>
+        <td><%= show_link user %> <%= edit_link user%></td>
       </tr>
     <% end %>
   </tbody>
