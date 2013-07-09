@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
   
   ROLES = %w[superuser institutional_admin institutional_user]
 

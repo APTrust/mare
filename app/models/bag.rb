@@ -1,5 +1,6 @@
 class Bag
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   belongs_to :description_object
   has_one :compressed_bag

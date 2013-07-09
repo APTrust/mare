@@ -1,5 +1,6 @@
 class TransactionalObject
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   # Since mongoid doesn't support :through relationships, we have to manually create them.
   def institution

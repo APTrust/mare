@@ -1,5 +1,6 @@
 class DescriptionObject
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   belongs_to :institution
   has_one :bag
