@@ -3,7 +3,7 @@ class DescriptionObject
   include Mongoid::Timestamps
 
   belongs_to :institution
-  has_one :bag
+  has_many :bag
   has_one :transactional_object
 
   field :title, type: String
