@@ -4,7 +4,7 @@ class User
   
   ROLES = %w[superuser institutional_admin institutional_user]
 
-  belongs_to :institution, touch: true
+  belongs_to :institution, autosave: true, touch: true
 
   validates :institution_id, :email, :phone_number, presence: true
   validates :institution, associated: true
