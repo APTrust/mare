@@ -57,8 +57,8 @@ end
 #   gem 'travis-lint'
 # end
 
-gem 'mongoid', github: 'mongoid/mongoid'
 
+gem 'mongoid', github: 'mongoid/mongoid' # mongoid always has to go before cancan
 gem 'bootstrap-sass'
 gem 'cancan'
 gem 'devise', github: 'plataformatec/devise'
