@@ -57,6 +57,8 @@ end
 #   gem 'travis-lint'
 # end
 
+gem 'mongoid', github: 'mongoid/mongoid'
+
 gem 'bootstrap-sass'
 gem 'cancan'
 gem 'devise', github: 'plataformatec/devise'
@@ -65,9 +67,9 @@ gem 'fedora_rails', github: 'uvalib-dcs/fedora_rails', branch: 'master'
 gem 'figaro'
 gem 'jquery-turbolinks'
 gem 'loggable' # A stupid requirement from Rubydora
-gem 'mongoid', github: 'mongoid/mongoid'
 gem 'omniauth-google-oauth2'
 gem 'puma'
 gem 'simple_form'
+gem 'rails_12factor', group: :production
 
 
