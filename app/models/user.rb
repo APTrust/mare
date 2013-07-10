@@ -8,6 +8,7 @@ class User
 
   validates :institution_id, :email, :phone_number, presence: true
   validates :institution, associated: true
+  validates :email, uniqueness: true
 
   # Custom format validations.  See lib/customer_validators.rb
   validates :name, person_name_format: true
