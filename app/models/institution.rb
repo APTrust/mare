@@ -1,5 +1,6 @@
 class Institution
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   has_many :description_objects
   has_many :users
@@ -33,5 +34,4 @@ class Institution
       end
     end
   end
-
 end
