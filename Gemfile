@@ -70,6 +70,6 @@ gem 'loggable' # A stupid requirement from Rubydora
 gem 'omniauth-google-oauth2'
 gem 'puma'
 gem 'simple_form'
-gem 'rails_12factor', group: :production
+gem 'rails_12factor', group: :production # Necessary for asset compilation on heroku
 
 
