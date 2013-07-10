@@ -2,7 +2,7 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   require "omniauth-google-oauth2"
-  config.omniauth :google_oauth2, "689723257820-a3qtr5rumbeq25tb2egnggajba4prck0.apps.googleusercontent.com", "HMezic1RmLHx68DSNonLTaMV", { access_type: "offline", approval_prompt: "" }
+  config.omniauth :google_oauth2, ENV["GOOGLE_KEY"], ENV["GOOGLE_SECRET"], { access_type: "offline", approval_prompt: "" }
   
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
