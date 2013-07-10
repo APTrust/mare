@@ -19,10 +19,7 @@
         <td><%= description_object.title %></td>
         <td><%= translate(description_object.dpn_status.to_bool.class) %></td>
         <td><%= description_object.institution.name %></td>
-        <% if description_object.fedora_attribute.pid %>
         <td><%= description_object.fedora_attribute.pid %></td>
-        <% else %>
-        <% end %>
         <td><%= show_link description_object %> <%= edit_link description_object %></td>
       </tr>
     <% end %>

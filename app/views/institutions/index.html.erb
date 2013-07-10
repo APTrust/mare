@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>PID</th>
       <th></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
     <% @institutions.each do |institution| %>
       <tr>
         <td><%= institution.name %></td>
+        <td><%= institution.pid %></td>
         <td><%= show_link institution %> <%= edit_link institution %></td>
       </tr>
     <% end %>
