@@ -7,7 +7,7 @@
     <%= f.input :phone_number %>
     
     <% if can? :manage_institution, User %>
-      <%= f.association :institution, collection: Institution.all %>
+      <%= f.association :institution, collection: Institution.all.asc(:name) %>
     <% else %>
       <%= f.association :institution, collection: Institution.where(id: current_user.institution.id), include_blank: false, disabled: true %>
     <% end %>
