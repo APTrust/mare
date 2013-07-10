@@ -1,6 +1,7 @@
 class Institution
   include Mongoid::Document
   include Mongoid::Timestamps
+  include SavableTouch
 
   has_many :description_objects
   has_many :users
