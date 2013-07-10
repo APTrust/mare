@@ -4,7 +4,11 @@
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.input :dpn_status, as: :radio_buttons, html: {checked_value: true, unchecked_value: false} %>
-    <%= f.input :institution_id, collection: Institution.all, as: :select %>
+    <% if can? :manage_institution, User %>
+      <%= f.input :institution_id, collection: Institution.all, as: :select %>
+    <% else %>
+      <%= f.input :institution_id, collection: [current_user.institution], as: :select, include_blank: false %>
+    <% end %>
   </div>
 
   <div class="form-actions">
