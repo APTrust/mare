@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: git://github.com/uvalib-dcs/fedora_rails.git
-  revision: 536cdfdad8db9653a2b66c3d5aeae432fdaa788d
+  revision: 862d1c0c640f3165710eb1191bbd22728b49e75d
   branch: master
   specs:
     fedora_rails (0.0.1)
