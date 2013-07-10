@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1><%= @institution.name %></h1>
-  <%= edit_link @institution %>
+  <%= edit_link @institution %> <%= show_link @institution.fedora_link, "Fedora Object", {target: "_blank", class: 'btn'} %>
 </div>
 
 <h3>Description Objects</h3>
@@ -21,7 +21,7 @@
         <td><%= description_object.title %></td>
         <td><%= translate(description_object.dpn_status.to_bool.class) %></td>
         <td><%= description_object.institution.name %></td>
-        <td><%= show_link description_object %> <%= edit_link description_object %></td>
+        <td><%= show_link description_object %> <%= edit_link description_object %> <%= show_link description_object.fedora_link, "Fedora Object", {target: "_blank", class: 'btn'} %></td>
       </tr>
     <% end %>
   </tbody>

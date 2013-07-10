@@ -16,7 +16,7 @@
       <tr>
         <td><%= institution.name %></td>
         <td><%= institution.pid %></td>
-        <td><%= show_link institution %> <%= edit_link institution %></td>
+        <td><%= show_link institution %> <%= edit_link institution %> <%= show_link institution.fedora_link, "Fedora Object", {target: "_blank", class: 'btn'} %></td>
       </tr>
     <% end %>
   </tbody>

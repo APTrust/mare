@@ -20,7 +20,7 @@
         <td><%= translate(description_object.dpn_status.to_bool.class) %></td>
         <td><%= description_object.institution.name %></td>
         <td><%= description_object.fedora_attribute.pid %></td>
-        <td><%= show_link description_object %> <%= edit_link description_object %></td>
+        <td><%= show_link description_object %> <%= edit_link description_object %> <%= show_link description_object.fedora_link, "Fedora Object", {target: "_blank", class: 'btn'} %></td>
       </tr>
     <% end %>
   </tbody>
