@@ -15,10 +15,22 @@ class Institution
     options[:indent] ||= 2
     xml = options[:builder] ||= ::Builder::XmlMarkup.new(indent: options[:indent])
     xml.instruct! unless options[:skip_instruct]
+
     xml.institution do
-      xml.tag!(:pid, pid)
-      xml.tag!(:id, _id)
-      xml.tag!(:name, name)
+      xml.pid pid
+      xml.id _id
+      xml.name name
+      xml.users do
+        self.users.each {|user|
+          xml.user do
+            xml.id user._id
+            xml.name user.display_name
+            xml.email user.email
+            xml.phone_number user.phone_number
+            xml.role user.role
+          end
+        }
+      end
     end
   end
 
