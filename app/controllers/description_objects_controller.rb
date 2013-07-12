@@ -6,7 +6,6 @@ class DescriptionObjectsController < ApplicationController
   # GET /description_objects
   # GET /description_objects.json
   def index
-    @description_objects = DescriptionObject.accessible_by(current_ability)
   end
 
   # GET /description_objects/1

@@ -6,7 +6,6 @@ class InstitutionsController < ApplicationController
   # GET /institutions
   # GET /institutions.json
   def index
-    @institutions = Institution.accessible_by(current_ability)
   end
 
   # GET /institutions/1
